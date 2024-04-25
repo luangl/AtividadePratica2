@@ -65,12 +65,12 @@ public class Sistema {
             System.out.print("Data de validade (dd/mm/aaaa): ");
             String dataValidade = scanner.nextLine();
             ProdutoPerecivel produtoPerecivel = new ProdutoPerecivel(nome, codigo, preco, dataValidade);
-            EstoqueManager.adicionarProduto(produtoPerecivel);
+            EstoqueControle.adicionarProduto(produtoPerecivel);
         } else if (tipo == 2) {
             System.out.print("Especificações do produto eletrônico: ");
             String especificacoes = scanner.nextLine();
             ProdutoEletronico produtoEletronico = new ProdutoEletronico(nome, codigo, preco, especificacoes);
-            EstoqueManager.adicionarProduto(produtoEletronico);
+            EstoqueControle.adicionarProduto(produtoEletronico);
         } else {
             System.out.println("Tipo de produto inválido.");
         }
@@ -79,7 +79,7 @@ public class Sistema {
     public static void buscarProduto() {
         System.out.print("Digite o código do produto: ");
         String codigo = scanner.nextLine();
-        Produto produto = EstoqueManager.buscarProdutoPorCodigo(codigo);
+        Produto produto = EstoqueControle.buscarProdutoPorCodigo(codigo);
         if (produto != null) {
             System.out.println("Produto encontrado: ");
             System.out.println(produto);
@@ -91,19 +91,19 @@ public class Sistema {
     public static void excluirProduto() {
         System.out.print("Digite o código do produto que deseja excluir: ");
         String codigo = scanner.nextLine();
-        Produto produto = EstoqueManager.buscarProdutoPorCodigo(codigo);
+        Produto produto = EstoqueControle.buscarProdutoPorCodigo(codigo);
         if (produto != null) {
-            EstoqueManager.removerProduto(produto);
+            EstoqueControle.removerProduto(produto);
         } else {
             System.out.println("Produto não encontrado.");
         }
     }
 
     public static void listarProdutos() {
-        EstoqueManager.listarTodosProdutos();
+        EstoqueControle.listarTodosProdutos();
     }
 
     public static void limparEstoque() {
-        EstoqueManager.limparEstoque();
+        EstoqueControle.limparEstoque();
     }
 }
